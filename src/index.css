@@ -463,8 +463,8 @@ h2 em {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
   background: transparent;
   border: none;
 }
@@ -472,8 +472,8 @@ h2 em {
 .product-card {
   background: #ffffff;
   color: #000000;
-  min-height: 520px;
-  padding: 26px 22px;
+  min-height: auto;
+  padding: 28px 24px;
   border-radius: 14px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
@@ -503,12 +503,12 @@ h2 em {
 
 .pallet-graphic {
   width: 100%;
-  margin: 18px 0;
+  margin: 14px 0 18px;
 }
 
 .product-info {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  padding-top: 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -520,55 +520,58 @@ h2 em {
   justify-content: space-between;
   align-items: baseline;
   gap: 8px;
+  margin-bottom: 6px;
 }
 
 .product-info h3 {
   font-family: "Manrope", sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-.product-weight {
-  font-size: 11px;
-  font-weight: 600;
-  opacity: 0.65;
-  white-space: nowrap;
-}
-
-.product-spec-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px 14px;
-  margin-top: 18px;
-}
-
-.product-spec-grid > div {
+.product-spec-list {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
+  margin-top: 14px;
 }
 
-.product-spec-grid dt {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.6;
-}
-
-.product-spec-grid dd {
+.spec-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   font-size: 13px;
-  font-weight: 500;
+  line-height: 1.4;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.07);
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+}
+
+.spec-label {
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 13px;
+}
+
+.spec-value {
+  color: #000000;
+  font-weight: 600;
+  font-size: 13px;
+  text-align: right;
 }
 
 .product-card-action {
-  margin-top: 20px;
-  padding-top: 14px;
-  border-top: 1px dashed rgba(0, 0, 0, 0.14);
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: #000000;
   text-decoration: none;
@@ -576,8 +579,8 @@ h2 em {
 }
 
 .product-card-action svg {
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
 }
 
 .product-card-action:hover {

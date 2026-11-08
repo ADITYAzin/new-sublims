@@ -301,7 +301,7 @@ export default function App() {
         <div className="section-heading">
           <div className="eyebrow">
             <span />
-            Tentang
+            Tentang Kami
           </div>
           <span className="section-number">02</span>
         </div>
@@ -382,34 +382,37 @@ export default function App() {
               <div className="product-info">
                 <div className="product-code-row">
                   <h3>{product.code}</h3>
-                  <span className="product-weight">Berat {product.weight}</span>
                 </div>
-                <dl className="product-spec-grid">
-                  <div>
-                    <dt>Dimensi</dt>
-                    <dd>{product.size}</dd>
+                <div className="product-spec-list">
+                  <div className="spec-row">
+                    <span className="spec-label">Dimensi</span>
+                    <span className="spec-value">{product.size}</span>
                   </div>
-                  <div>
-                    <dt>Beban Statis</dt>
-                    <dd>{product.staticLoad}</dd>
+                  <div className="spec-row">
+                    <span className="spec-label">Berat</span>
+                    <span className="spec-value">{product.weight}</span>
                   </div>
-                  <div>
-                    <dt>Beban Dinamis</dt>
-                    <dd>{product.dynamicLoad}</dd>
+                  <div className="spec-row">
+                    <span className="spec-label">Beban Statis</span>
+                    <span className="spec-value">{product.staticLoad}</span>
                   </div>
-                  <div>
-                    <dt>Beban Racking</dt>
-                    <dd>{product.rackingLoad}</dd>
+                  <div className="spec-row">
+                    <span className="spec-label">Beban Dinamis</span>
+                    <span className="spec-value">{product.dynamicLoad}</span>
                   </div>
-                  <div>
-                    <dt>Forklift</dt>
-                    <dd>{product.forklift}</dd>
+                  <div className="spec-row">
+                    <span className="spec-label">Beban Racking</span>
+                    <span className="spec-value">{product.rackingLoad}</span>
                   </div>
-                  <div>
-                    <dt>Hand Pallet</dt>
-                    <dd>{product.handPallet}</dd>
+                  <div className="spec-row">
+                    <span className="spec-label">Handling Forklift</span>
+                    <span className="spec-value">{product.forklift}</span>
                   </div>
-                </dl>
+                  <div className="spec-row">
+                    <span className="spec-label">Handling Hand Pallet</span>
+                    <span className="spec-value">{product.handPallet}</span>
+                  </div>
+                </div>
                 <a
                   className="product-card-action"
                   href={`https://wa.me/6285113668629?text=Halo%20SUBLiMS%2C%20saya%20tertarik%20dengan%20pallet%20tipe%20${product.code}%20(${product.size}).%20Mohon%20info%20ketersediaan%20dan%20penawaran%20harga.`}
