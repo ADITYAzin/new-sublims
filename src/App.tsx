@@ -191,15 +191,14 @@ function ArrowIcon() {
   );
 }
 
-function PalletGraphic({ dark }: { dark?: boolean }) {
-  const stroke = dark ? "#a2c4c9" : "#000000";
+function PalletGraphic() {
   return (
     <svg className="pallet-graphic" viewBox="0 0 320 190" fill="none" aria-hidden="true">
-      <path d="m34 93 126-62 127 62-127 63L34 93Z" stroke={stroke} strokeWidth="2" />
-      <path d="M34 93v18l126 63 127-63V93" stroke={stroke} strokeWidth="2" />
-      <path d="m64 79 126 63M96 62l127 63M128 46l127 63" stroke={stroke} />
-      <path d="m65 108 126-62M98 125l126-63M130 141l126-62" stroke={stroke} />
-      <path d="M75 128v21M246 128v21M146 160v20" stroke={stroke} strokeWidth="5" />
+      <path d="m34 93 126-62 127 62-127 63L34 93Z" stroke="#000000" strokeWidth="2" />
+      <path d="M34 93v18l126 63 127-63V93" stroke="#000000" strokeWidth="2" />
+      <path d="m64 79 126 63M96 62l127 63M128 46l127 63" stroke="#a2c4c9" strokeWidth="1.5" />
+      <path d="m65 108 126-62M98 125l126-63M130 141l126-62" stroke="#a2c4c9" strokeWidth="1.5" />
+      <path d="M75 128v21M246 128v21M146 160v20" stroke="#000000" strokeWidth="5" />
     </svg>
   );
 }
@@ -375,15 +374,12 @@ export default function App() {
 
         <div className="product-grid">
           {filteredProducts.map((product, index) => (
-            <article
-              className={`product-card ${product.tone === "dark" ? "dark" : ""}`}
-              key={product.code}
-            >
+            <article className="product-card" key={product.code}>
               <div className="product-top">
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <span className="product-type">{product.type}</span>
               </div>
-              <PalletGraphic dark={product.tone === "dark"} />
+              <PalletGraphic />
               <div className="product-info">
                 <div className="product-code-row">
                   <h3>{product.code}</h3>
