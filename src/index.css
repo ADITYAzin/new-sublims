@@ -236,6 +236,8 @@ h2 em {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 36px;
 }
 
 .hero-bottom p {
@@ -795,6 +797,7 @@ footer p,
 
   .hero-bottom {
     align-items: flex-start;
+    padding-top: 28px;
   }
 
   .hero-bottom p {
