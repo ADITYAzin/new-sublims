@@ -43,7 +43,7 @@ function ArrowIcon() {
 }
 
 function PalletGraphic({ dark }: { dark?: boolean }) {
-  const stroke = dark ? "#f3f0e8" : "#1239bf";
+  const stroke = dark ? "#a2c4c9" : "#000000";
   return (
     <svg className="pallet-graphic" viewBox="0 0 320 190" fill="none" aria-hidden="true">
       <path d="m34 93 126-62 127 62-127 63L34 93Z" stroke={stroke} strokeWidth="2" />
