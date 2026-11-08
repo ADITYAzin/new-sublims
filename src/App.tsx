@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const heroImage =
   "https://images.unsplash.com/photo-1620388640785-892616248ec8?auto=format&fit=crop&w=2200&q=88";
@@ -57,56 +57,66 @@ function PalletGraphic({ dark }: { dark?: boolean }) {
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <main>
-      <section className="hero" id="beranda">
-        <img
-          className="hero-image"
-          src={heroImage}
-          alt="Operasional forklift di dalam gudang logistik"
-        />
-        <div className="hero-overlay" />
+    <>
+      <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+        <a className="logo" href="#beranda" onClick={closeMenu} aria-label="SUBLiMS">
+          SUBLiMS<span>.</span>
+        </a>
 
-        <header className="site-header">
-          <a className="logo" href="#beranda" onClick={closeMenu} aria-label="SUBLiMS">
-            SUBLiMS<span>.</span>
+        <button
+          className="menu-button"
+          type="button"
+          aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((value) => !value)}
+        >
+          <span />
+          <span />
+        </button>
+
+        <nav className={menuOpen ? "nav-links is-open" : "nav-links"}>
+          <a href="#tentang" onClick={closeMenu}>
+            Tentang
           </a>
-
-          <button
-            className="menu-button"
-            type="button"
-            aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((value) => !value)}
-          >
-            <span />
-            <span />
-          </button>
-
-          <nav className={menuOpen ? "nav-links is-open" : "nav-links"}>
-            <a href="#tentang" onClick={closeMenu}>
-              Tentang
-            </a>
-            <a href="#katalog" onClick={closeMenu}>
-              Katalog
-            </a>
-            <a href="#kontak" onClick={closeMenu}>
-              Kontak
-            </a>
-          </nav>
-
-          <a
-            className="header-cta"
-            href="https://wa.me/6285113668629"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Hubungi kami <ArrowIcon />
+          <a href="#katalog" onClick={closeMenu}>
+            Katalog
           </a>
-        </header>
+          <a href="#kontak" onClick={closeMenu}>
+            Kontak
+          </a>
+        </nav>
+
+        <a
+          className="header-cta"
+          href="https://wa.me/6285113668629"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Hubungi kami <ArrowIcon />
+        </a>
+      </header>
+
+      <main>
+        <section className="hero" id="beranda">
+          <img
+            className="hero-image"
+            src={heroImage}
+            alt="Operasional forklift di dalam gudang logistik"
+          />
+          <div className="hero-overlay" />
 
         <div className="hero-content">
           <div className="eyebrow light">
@@ -286,5 +296,6 @@ export default function App() {
         </footer>
       </section>
     </main>
+  </>
   );
 }

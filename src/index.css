@@ -15,6 +15,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 94px;
 }
 
 @layer base {
@@ -46,6 +47,7 @@ main {
   background: #000000;
   display: flex;
   flex-direction: column;
+  padding-top: 94px;
 }
 
 .hero-image,
@@ -74,14 +76,34 @@ main {
 }
 
 .site-header {
-  position: relative;
-  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   height: 94px;
   padding: 0 clamp(24px, 5vw, 76px);
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    background 200ms ease,
+    border-color 200ms ease,
+    height 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  height: 80px;
 }
 
 .logo {
@@ -628,14 +650,23 @@ footer p,
 }
 
 @media (max-width: 760px) {
+  html {
+    scroll-padding-top: 76px;
+  }
+
   .hero {
     min-height: 700px;
+    padding-top: 76px;
   }
 
   .site-header {
     height: 76px;
     grid-template-columns: 1fr auto;
     padding-inline: 22px;
+  }
+
+  .site-header.is-scrolled {
+    height: 76px;
   }
 
   .menu-button {
@@ -657,7 +688,7 @@ footer p,
   .nav-links {
     display: none;
     position: absolute;
-    top: 76px;
+    top: 100%;
     left: 0;
     right: 0;
     padding: 35px 22px 42px;
@@ -667,6 +698,7 @@ footer p,
     color: #ffffff;
     background: #000000;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
   }
 
   .nav-links.is-open {
