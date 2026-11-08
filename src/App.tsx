@@ -274,17 +274,14 @@ export default function App() {
           <div className="hero-overlay" />
 
         <div className="hero-content">
-          <div className="eyebrow light">
-            <span />
-            Distributor pallet plastik
-          </div>
+          
           <h1>
-            Pallet tangguh.
+            Pallet Plastik
             <br />
-            Alur kerja <em>lancar.</em>
+           Berkualitas
           </h1>
           <div className="hero-bottom">
-            <p>Pallet plastik terukur untuk pergudangan, manufaktur, dan distribusi industri.</p>
+            <p>Distributor Berbagai Macam Jenis & Ukuran Pallet Plastik.</p>
             <a className="circle-link" href="#katalog" aria-label="Lihat katalog">
               <ArrowIcon />
             </a>
@@ -292,8 +289,7 @@ export default function App() {
         </div>
 
         <div className="hero-index">
-          <span>01</span>
-          <span>SUBLiMS / SIDOARJO</span>
+          
         </div>
       </section>
 
@@ -349,9 +345,7 @@ export default function App() {
 
         <div className="catalog-title">
           <h2>
-            Pilih berdasarkan
-            <br />
-            <em>kebutuhan Anda.</em>
+            Pilih <em>kebutuhan Anda.</em>
           </h2>
         </div>
 
@@ -401,11 +395,11 @@ export default function App() {
                     <span className="spec-value">{product.rackingLoad}</span>
                   </div>
                   <div className="spec-row">
-                    <span className="spec-label">Handling Forklift</span>
+                    <span className="spec-label">Akses Forklift</span>
                     <span className="spec-value">{product.forklift}</span>
                   </div>
                   <div className="spec-row">
-                    <span className="spec-label">Handling Hand Pallet</span>
+                    <span className="spec-label">Akses Hand Pallet</span>
                     <span className="spec-value">{product.handPallet}</span>
                   </div>
                 </div>
@@ -434,14 +428,14 @@ export default function App() {
         <div className="section-heading">
           <div className="eyebrow">
             <span />
-            Kontak
+            Kontak Kami
           </div>
           <span className="section-number">04</span>
         </div>
 
         <div className="contact-main">
           <h2>
-            Punya kebutuhan
+            Pesan Pallet
             <br />
             pallet <em>spesifik?</em>
           </h2>
