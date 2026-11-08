@@ -159,8 +159,9 @@ export default function App() {
           </h2>
           <div className="about-copy">
             <p>
-              Kami membantu bisnis memilih pallet plastik sesuai beban, alur alat angkut, dan
-              kebutuhan operasional—tanpa spesifikasi berlebih.
+              Subur Berlimpah Sejahtera berdiri pada tahun 2025 dan berlokasi di Sidoarjo - Jawa
+              Timur. Kami melayani pemesanan berbagai macam jenis dan ukuran pallet plastik. Baik
+              dari bahan plastik murni maupun daur ulang.
             </p>
             <a className="text-link" href="#kontak">
               Kenali cara kami bekerja <ArrowIcon />
