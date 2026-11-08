@@ -377,7 +377,6 @@ export default function App() {
             <article className="product-card" key={product.code}>
               <div className="product-top">
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <span className="product-type">{product.type}</span>
               </div>
               <PalletGraphic />
               <div className="product-info">

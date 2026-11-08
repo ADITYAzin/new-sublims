@@ -494,18 +494,11 @@ h2 em {
 
 .product-top {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-end;
   font-size: 11px;
-}
-
-.product-type {
-  border: 1px solid var(--brand);
-  color: #000000;
-  background: var(--brand);
-  font-weight: 600;
-  border-radius: 30px;
-  padding: 5px 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--brand);
 }
 
 .pallet-graphic {
