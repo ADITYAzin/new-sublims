@@ -5,33 +5,182 @@ const heroImage =
 
 const products = [
   {
-    code: "SNS1111-12W",
+    code: "SNS1111-12H",
     size: "110 × 110 × 12 cm",
-    load: "3.000 kg",
+    weight: "7.5 kg",
+    staticLoad: "2.000 kg",
+    dynamicLoad: "1.000 kg",
+    rackingLoad: "—",
+    forklift: "4 Arah",
+    handPallet: "4 Arah",
+    stacker: "—",
     type: "Light Duty",
     tone: "light",
+    category: "110",
+  },
+  {
+    code: "SNS1111-12W",
+    size: "110 × 110 × 12 cm",
+    weight: "7.5 kg",
+    staticLoad: "3.000 kg",
+    dynamicLoad: "1.500 kg",
+    rackingLoad: "—",
+    forklift: "4 Arah",
+    handPallet: "4 Arah",
+    stacker: "—",
+    type: "Medium Duty",
+    tone: "dark",
+    category: "110",
+  },
+  {
+    code: "SNS1111-15H",
+    size: "110 × 110 × 15 cm",
+    weight: "12 kg",
+    staticLoad: "3.000 kg",
+    dynamicLoad: "1.500 kg",
+    rackingLoad: "750 kg",
+    forklift: "4 Arah",
+    handPallet: "4 Arah",
+    stacker: "—",
+    type: "Racking",
+    tone: "light",
+    category: "110",
   },
   {
     code: "SNS1111-15W",
     size: "110 × 110 × 15 cm",
-    load: "4.000 kg",
-    type: "Racking",
+    weight: "12 kg",
+    staticLoad: "4.000 kg",
+    dynamicLoad: "2.000 kg",
+    rackingLoad: "1.000 kg",
+    forklift: "4 Arah",
+    handPallet: "4 Arah",
+    stacker: "—",
+    type: "Heavy Racking",
     tone: "dark",
+    category: "110",
+  },
+  {
+    code: "SNS1210-12H",
+    size: "120 × 100 × 12 cm",
+    weight: "7.5 kg",
+    staticLoad: "2.000 kg",
+    dynamicLoad: "1.000 kg",
+    rackingLoad: "—",
+    forklift: "4 Arah",
+    handPallet: "4 Arah",
+    stacker: "—",
+    type: "Light Duty",
+    tone: "dark",
+    category: "120",
+  },
+  {
+    code: "SNS1210-12W",
+    size: "120 × 100 × 12 cm",
+    weight: "7.5 kg",
+    staticLoad: "3.000 kg",
+    dynamicLoad: "1.500 kg",
+    rackingLoad: "—",
+    forklift: "4 Arah",
+    handPallet: "4 Arah",
+    stacker: "—",
+    type: "Medium Duty",
+    tone: "light",
+    category: "120",
+  },
+  {
+    code: "SNS1210-16H",
+    size: "120 × 100 × 16 cm",
+    weight: "17 kg",
+    staticLoad: "5.000 kg",
+    dynamicLoad: "1.500 kg",
+    rackingLoad: "750 kg",
+    forklift: "4 Arah",
+    handPallet: "2 Arah",
+    stacker: "2 Arah",
+    type: "Heavy Duty",
+    tone: "dark",
+    category: "120",
   },
   {
     code: "SNS1210-16W",
     size: "120 × 100 × 16 cm",
-    load: "6.000 kg",
-    type: "Heavy Duty",
+    weight: "17 kg",
+    staticLoad: "6.000 kg",
+    dynamicLoad: "2.000 kg",
+    rackingLoad: "1.000 kg",
+    forklift: "4 Arah",
+    handPallet: "2 Arah",
+    stacker: "2 Arah",
+    type: "Heavy Racking",
     tone: "light",
+    category: "120",
+  },
+  {
+    code: "SFF1210-16H",
+    size: "120 × 100 × 16 cm",
+    weight: "18 kg",
+    staticLoad: "5.000 kg",
+    dynamicLoad: "1.500 kg",
+    rackingLoad: "750 kg",
+    forklift: "4 Arah",
+    handPallet: "2 Arah",
+    stacker: "2 Arah",
+    type: "Flat Deck",
+    tone: "light",
+    category: "flat",
   },
   {
     code: "SFF1210-16W",
     size: "120 × 100 × 16 cm",
-    load: "6.000 kg",
-    type: "Flat Deck",
+    weight: "18 kg",
+    staticLoad: "6.000 kg",
+    dynamicLoad: "2.000 kg",
+    rackingLoad: "1.000 kg",
+    forklift: "4 Arah",
+    handPallet: "2 Arah",
+    stacker: "2 Arah",
+    type: "Flat Deck Heavy",
     tone: "dark",
+    category: "flat",
   },
+  {
+    code: "SPP16",
+    size: "120 × 100 × 15 cm",
+    weight: "16 kg",
+    staticLoad: "2.000 kg",
+    dynamicLoad: "1.000 kg",
+    rackingLoad: "—",
+    forklift: "4 Arah",
+    handPallet: "4 Arah",
+    stacker: "4 Arah",
+    type: "Multi-Way",
+    tone: "light",
+    category: "spp",
+  },
+  {
+    code: "SPP25",
+    size: "120 × 100 × 15 cm",
+    weight: "25 kg",
+    staticLoad: "3.000 kg",
+    dynamicLoad: "1.500 kg",
+    rackingLoad: "750 kg",
+    forklift: "2 Arah",
+    handPallet: "2 Arah",
+    stacker: "2 Arah",
+    type: "Solid Heavy",
+    tone: "dark",
+    category: "spp",
+  },
+];
+
+const categories = [
+  { id: "all", label: "Semua Produk (12)" },
+  { id: "110", label: "Ukuran 110 × 110 cm" },
+  { id: "120", label: "Ukuran 120 × 100 cm" },
+  { id: "racking", label: "Mendukung Racking" },
+  { id: "flat", label: "Seri Flat Deck" },
+  { id: "spp", label: "Seri SPP" },
 ];
 
 function ArrowIcon() {
@@ -58,6 +207,13 @@ function PalletGraphic({ dark }: { dark?: boolean }) {
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  const filteredProducts = products.filter((p) => {
+    if (selectedCategory === "all") return true;
+    if (selectedCategory === "racking") return p.rackingLoad !== "—";
+    return p.category === selectedCategory;
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -153,13 +309,11 @@ export default function App() {
 
         <div className="about-grid">
           <h2>
-            Kemasan industri
-            <br />
-            yang <em>masuk akal.</em>
+            <em>Subur Berlimpah Sejahtera</em>
           </h2>
           <div className="about-copy">
             <p>
-              Subur Berlimpah Sejahtera berdiri pada tahun 2025 dan berlokasi di Sidoarjo - Jawa
+              Kami berdiri pada tahun 2025 dan berlokasi di Sidoarjo - Jawa
               Timur. Kami melayani pemesanan berbagai macam jenis dan ukuran pallet plastik. Baik
               dari bahan plastik murni maupun daur ulang.
             </p>
@@ -206,8 +360,21 @@ export default function App() {
           <p>Tersedia material virgin dan recycled untuk berbagai kebutuhan rantai pasok.</p>
         </div>
 
+        <div className="catalog-filters">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              className={`filter-btn ${selectedCategory === cat.id ? "active" : ""}`}
+              onClick={() => setSelectedCategory(cat.id)}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
         <div className="product-grid">
-          {products.map((product, index) => (
+          {filteredProducts.map((product, index) => (
             <article
               className={`product-card ${product.tone === "dark" ? "dark" : ""}`}
               key={product.code}
@@ -218,17 +385,44 @@ export default function App() {
               </div>
               <PalletGraphic dark={product.tone === "dark"} />
               <div className="product-info">
-                <h3>{product.code}</h3>
-                <dl>
+                <div className="product-code-row">
+                  <h3>{product.code}</h3>
+                  <span className="product-weight">Berat {product.weight}</span>
+                </div>
+                <dl className="product-spec-grid">
                   <div>
                     <dt>Dimensi</dt>
                     <dd>{product.size}</dd>
                   </div>
                   <div>
-                    <dt>Beban statis</dt>
-                    <dd>{product.load}</dd>
+                    <dt>Beban Statis</dt>
+                    <dd>{product.staticLoad}</dd>
+                  </div>
+                  <div>
+                    <dt>Beban Dinamis</dt>
+                    <dd>{product.dynamicLoad}</dd>
+                  </div>
+                  <div>
+                    <dt>Beban Racking</dt>
+                    <dd>{product.rackingLoad}</dd>
+                  </div>
+                  <div>
+                    <dt>Forklift</dt>
+                    <dd>{product.forklift}</dd>
+                  </div>
+                  <div>
+                    <dt>Hand Pallet</dt>
+                    <dd>{product.handPallet}</dd>
                   </div>
                 </dl>
+                <a
+                  className="product-card-action"
+                  href={`https://wa.me/6285113668629?text=Halo%20SUBLiMS%2C%20saya%20tertarik%20dengan%20pallet%20tipe%20${product.code}%20(${product.size}).%20Mohon%20info%20ketersediaan%20dan%20penawaran%20harga.`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Pesan / Tanya Produk <ArrowIcon />
+                </a>
               </div>
             </article>
           ))}
@@ -282,7 +476,7 @@ export default function App() {
           </div>
           <div className="address">
             <span>Lokasi</span>
-            <p>Wonoayu, Sidoarjo, Jawa Timur</p>
+            <p>Ds. Pilang, RT 24 / RW 12, Wonoayu, Sidoarjo, Jawa Timur 61261</p>
           </div>
         </div>
 

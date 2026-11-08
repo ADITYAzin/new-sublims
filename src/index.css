@@ -432,6 +432,35 @@ h2 em {
   color: rgba(0, 0, 0, 0.7);
 }
 
+.catalog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 34px;
+}
+
+.filter-btn {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--brand);
+}
+
+.filter-btn.active {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -443,10 +472,11 @@ h2 em {
 .product-card {
   background: #ffffff;
   color: #000000;
-  min-height: 480px;
+  min-height: 520px;
   padding: 24px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .product-card.dark {
@@ -478,42 +508,90 @@ h2 em {
 
 .pallet-graphic {
   width: 100%;
-  margin: auto 0;
+  margin: 18px 0;
 }
 
 .product-info {
   border-top: 1px solid currentColor;
-  padding-top: 20px;
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.product-code-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
 }
 
 .product-info h3 {
   font-family: "Manrope", sans-serif;
-  font-size: 21px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-.product-info dl {
+.product-weight {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.65;
+  white-space: nowrap;
+}
+
+.product-spec-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 25px;
+  gap: 12px 14px;
+  margin-top: 18px;
 }
 
-.product-info dl > div {
+.product-spec-grid > div {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
 }
 
-.product-info dt {
+.product-spec-grid dt {
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   opacity: 0.6;
 }
 
-.product-info dd {
+.product-spec-grid dd {
   font-size: 13px;
+  font-weight: 500;
+}
+
+.product-card-action {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+  color: #000000;
+  text-decoration: none;
+  transition: opacity 180ms ease, color 180ms ease;
+}
+
+.product-card-action svg {
+  width: 14px;
+  height: 14px;
+}
+
+.product-card.dark .product-card-action {
+  border-top-color: rgba(255, 255, 255, 0.2);
+  color: var(--brand);
+}
+
+.product-card-action:hover {
+  opacity: 0.65;
 }
 
 .catalog-cta {
@@ -643,7 +721,7 @@ footer p,
   }
 
   .product-card {
-    min-height: 450px;
+    min-height: auto;
   }
 
   .contact-main {
@@ -788,7 +866,7 @@ footer p,
   }
 
   .product-card {
-    min-height: 430px;
+    min-height: auto;
   }
 
   .pallet-graphic {
