@@ -334,7 +334,7 @@ h2 em {
   font-size: 20px;
   line-height: 1.6;
   color: rgba(0, 0, 0, 0.7);
-  margin-bottom: 38px;
+  margin-bottom: 0;
 }
 
 .text-link {

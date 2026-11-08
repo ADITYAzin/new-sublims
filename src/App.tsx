@@ -316,9 +316,6 @@ export default function App() {
               Timur. Kami melayani pemesanan berbagai macam jenis dan ukuran pallet plastik. Baik
               dari bahan plastik murni maupun daur ulang.
             </p>
-            <a className="text-link" href="#kontak">
-              Kenali cara kami bekerja <ArrowIcon />
-            </a>
           </div>
         </div>
 
@@ -345,7 +342,7 @@ export default function App() {
         <div className="section-heading catalog-heading">
           <div className="eyebrow">
             <span />
-            Katalog
+            Katalog Kami
           </div>
           <span className="section-number">03</span>
         </div>
@@ -354,9 +351,8 @@ export default function App() {
           <h2>
             Pilih berdasarkan
             <br />
-            <em>kebutuhan beban.</em>
+            <em>kebutuhan Anda.</em>
           </h2>
-          <p>Tersedia material virgin dan recycled untuk berbagai kebutuhan rantai pasok.</p>
         </div>
 
         <div className="catalog-filters">
