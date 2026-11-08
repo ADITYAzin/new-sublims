@@ -136,7 +136,7 @@ export default function App() {
         <div className="section-heading">
           <div className="eyebrow">
             <span />
-            Tentang SUBLiMS
+            Tentang
           </div>
           <span className="section-number">02</span>
         </div>
@@ -181,7 +181,7 @@ export default function App() {
         <div className="section-heading catalog-heading">
           <div className="eyebrow">
             <span />
-            Pilihan produk
+            Katalog
           </div>
           <span className="section-number">03</span>
         </div>
@@ -235,7 +235,7 @@ export default function App() {
         <div className="section-heading">
           <div className="eyebrow">
             <span />
-            Mulai percakapan
+            Kontak
           </div>
           <span className="section-number">04</span>
         </div>
