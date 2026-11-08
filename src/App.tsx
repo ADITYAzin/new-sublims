@@ -179,7 +179,7 @@ export default function App() {
 
       <section className="catalog section-pad" id="katalog">
         <div className="section-heading catalog-heading">
-          <div className="eyebrow light">
+          <div className="eyebrow">
             <span />
             Pilihan produk
           </div>
