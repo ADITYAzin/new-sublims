@@ -1,0 +1,10 @@
+{
+  "description": "A minimalist company profile landing page that introduces the business, showcases its catalog, and helps visitors get in touch through a modern image-overlay design.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
