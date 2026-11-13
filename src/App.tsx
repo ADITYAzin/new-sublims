@@ -15,6 +15,8 @@ const products = [
     handPallet: "4 Arah",
     stacker: "—",
     type: "Light Duty",
+    palletType: "mangkok",
+    palletTypeName: "Pallet Mangkok",
     tone: "light",
     category: "110",
   },
@@ -29,6 +31,8 @@ const products = [
     handPallet: "4 Arah",
     stacker: "—",
     type: "Medium Duty",
+    palletType: "mangkok",
+    palletTypeName: "Pallet Mangkok",
     tone: "dark",
     category: "110",
   },
@@ -43,6 +47,8 @@ const products = [
     handPallet: "4 Arah",
     stacker: "—",
     type: "Racking",
+    palletType: "racking",
+    palletTypeName: "Pallet Racking",
     tone: "light",
     category: "110",
   },
@@ -57,6 +63,8 @@ const products = [
     handPallet: "4 Arah",
     stacker: "—",
     type: "Heavy Racking",
+    palletType: "racking",
+    palletTypeName: "Pallet Racking",
     tone: "dark",
     category: "110",
   },
@@ -71,6 +79,8 @@ const products = [
     handPallet: "4 Arah",
     stacker: "—",
     type: "Light Duty",
+    palletType: "mangkok",
+    palletTypeName: "Pallet Mangkok",
     tone: "dark",
     category: "120",
   },
@@ -85,6 +95,8 @@ const products = [
     handPallet: "4 Arah",
     stacker: "—",
     type: "Medium Duty",
+    palletType: "mangkok",
+    palletTypeName: "Pallet Mangkok",
     tone: "light",
     category: "120",
   },
@@ -99,6 +111,8 @@ const products = [
     handPallet: "2 Arah",
     stacker: "2 Arah",
     type: "Heavy Duty",
+    palletType: "racking",
+    palletTypeName: "Pallet Racking",
     tone: "dark",
     category: "120",
   },
@@ -113,6 +127,8 @@ const products = [
     handPallet: "2 Arah",
     stacker: "2 Arah",
     type: "Heavy Racking",
+    palletType: "racking",
+    palletTypeName: "Pallet Racking",
     tone: "light",
     category: "120",
   },
@@ -127,6 +143,8 @@ const products = [
     handPallet: "2 Arah",
     stacker: "2 Arah",
     type: "Flat Deck",
+    palletType: "flat",
+    palletTypeName: "Pallet Flat Deck",
     tone: "light",
     category: "flat",
   },
@@ -141,6 +159,8 @@ const products = [
     handPallet: "2 Arah",
     stacker: "2 Arah",
     type: "Flat Deck Heavy",
+    palletType: "flat",
+    palletTypeName: "Pallet Flat Deck",
     tone: "dark",
     category: "flat",
   },
@@ -155,6 +175,8 @@ const products = [
     handPallet: "4 Arah",
     stacker: "4 Arah",
     type: "Multi-Way",
+    palletType: "solid",
+    palletTypeName: "Pallet Heavy Solid",
     tone: "light",
     category: "spp",
   },
@@ -169,18 +191,19 @@ const products = [
     handPallet: "2 Arah",
     stacker: "2 Arah",
     type: "Solid Heavy",
+    palletType: "solid",
+    palletTypeName: "Pallet Heavy Solid",
     tone: "dark",
     category: "spp",
   },
 ];
 
 const categories = [
-  { id: "all", label: "Semua Produk (12)" },
-  { id: "110", label: "Ukuran 110 × 110 cm" },
-  { id: "120", label: "Ukuran 120 × 100 cm" },
-  { id: "racking", label: "Mendukung Racking" },
-  { id: "flat", label: "Seri Flat Deck" },
-  { id: "spp", label: "Seri SPP" },
+  { id: "all", label: "Semua Pallet", count: 12 },
+  { id: "mangkok", label: "Pallet Mangkok", count: 4 },
+  { id: "racking", label: "Pallet Racking", count: 4 },
+  { id: "flat", label: "Pallet Flat Deck", count: 2 },
+  { id: "solid", label: "Pallet Heavy Solid", count: 2 },
 ];
 
 function ArrowIcon() {
@@ -210,8 +233,7 @@ export default function App() {
 
   const filteredProducts = products.filter((p) => {
     if (selectedCategory === "all") return true;
-    if (selectedCategory === "racking") return p.rackingLoad !== "—";
-    return p.category === selectedCategory;
+    return p.palletType === selectedCategory;
   });
 
   useEffect(() => {
@@ -349,24 +371,28 @@ export default function App() {
           </h2>
         </div>
 
-        <div className="catalog-filters">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              type="button"
-              className={`filter-btn ${selectedCategory === cat.id ? "active" : ""}`}
-              onClick={() => setSelectedCategory(cat.id)}
-            >
-              {cat.label}
-            </button>
-          ))}
+        <div className="catalog-filters-sticky-wrap">
+          <div className="catalog-filters">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                className={`filter-btn ${selectedCategory === cat.id ? "active" : ""}`}
+                onClick={() => setSelectedCategory(cat.id)}
+              >
+                <span>{cat.label}</span>
+                <span className="filter-count">{cat.count}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="product-grid">
           {filteredProducts.map((product, index) => (
             <article className="product-card" key={product.code}>
               <div className="product-top">
-                <span>{String(index + 1).padStart(2, "0")}</span>
+                <span className="product-type-badge">{product.palletTypeName}</span>
+                <span className="product-index">{String(index + 1).padStart(2, "0")}</span>
               </div>
               <PalletGraphic />
               <div className="product-info">

@@ -22,6 +22,7 @@ html {
   body {
     background: var(--white);
     color: var(--black);
+    overflow-x: hidden;
   }
 
   a,
@@ -36,7 +37,7 @@ html {
 }
 
 main {
-  overflow: hidden;
+  overflow-x: clip;
 }
 
 .hero {
@@ -434,17 +435,59 @@ h2 em {
   color: rgba(0, 0, 0, 0.7);
 }
 
+.catalog-filters-sticky-wrap {
+  position: sticky;
+  top: 80px;
+  z-index: 30;
+  background: #ffffff;
+  margin-left: calc(-1 * clamp(24px, 5vw, 76px));
+  margin-right: calc(-1 * clamp(24px, 5vw, 76px));
+  padding: 14px clamp(24px, 5vw, 76px);
+  margin-bottom: 34px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 900px) {
+  .catalog-filters-sticky-wrap {
+    top: 76px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
 .catalog-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 34px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .catalog-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .catalog-filters::-webkit-scrollbar {
+    display: none;
+  }
+  .filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
 }
 
 .filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 13px;
   font-weight: 500;
-  padding: 8px 18px;
+  padding: 7px 16px;
   border-radius: 9999px;
   border: 1px solid rgba(0, 0, 0, 0.14);
   background: #ffffff;
@@ -455,12 +498,33 @@ h2 em {
 
 .filter-btn:hover {
   border-color: var(--brand);
+  background: #f7fafb;
 }
 
 .filter-btn.active {
   background: #000000;
   color: #ffffff;
   border-color: #000000;
+}
+
+.filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.7);
+  transition: all 180ms ease;
+}
+
+.filter-btn.active .filter-count {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
 }
 
 .product-grid {
@@ -496,7 +560,26 @@ h2 em {
 
 .product-top {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+
+.product-type-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: rgba(162, 196, 201, 0.18);
+  color: #1a444a;
+  border: 1px solid rgba(162, 196, 201, 0.45);
+}
+
+.product-index {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
