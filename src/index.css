@@ -413,8 +413,16 @@ h2 em {
 }
 
 .about {
-  background: #ffffff;
-  color: #000000;
+  background: #000000;
+  color: #ffffff;
+}
+
+.about .section-heading {
+  border-bottom-color: var(--line-light);
+}
+
+.about .eyebrow {
+  color: #ffffff;
 }
 
 .about-grid {
@@ -430,9 +438,14 @@ h2 em {
   font-size: clamp(50px, 6.1vw, 94px);
 }
 
+.about h2,
+.contact h2 {
+  color: #ffffff;
+}
+
 .about h2 em,
 .contact h2 em {
-  color: #000000;
+  color: #ffffff;
   text-decoration: underline;
   text-decoration-color: var(--brand);
   text-underline-offset: 8px;
@@ -447,7 +460,7 @@ h2 em {
   max-width: 470px;
   font-size: 20px;
   line-height: 1.6;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(255, 255, 255, 0.75);
   margin-bottom: 0;
 }
 
@@ -466,7 +479,7 @@ h2 em {
 }
 
 .principles {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-light);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -474,7 +487,7 @@ h2 em {
 .principle {
   padding: 34px 36px 0 0;
   min-height: 210px;
-  border-right: 1px solid var(--line);
+  border-right: 1px solid var(--line-light);
 }
 
 .principle + .principle {
@@ -496,12 +509,12 @@ h2 em {
   font-weight: 600;
   font-size: 21px;
   margin: 34px 0 10px;
-  color: #000000;
+  color: #ffffff;
 }
 
 .principle p {
   line-height: 1.55;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(255, 255, 255, 0.65);
   max-width: 310px;
 }
 
@@ -1137,9 +1150,16 @@ h2 em {
 }
 
 .contact {
-  background: #ffffff;
-  color: #000000;
-  padding-bottom: 36px;
+  background: #000000;
+  color: #ffffff;
+}
+
+.contact .section-heading {
+  border-bottom-color: var(--line-light);
+}
+
+.contact .eyebrow {
+  color: #ffffff;
 }
 
 .contact-main {
@@ -1179,8 +1199,8 @@ h2 em {
 .contact-details {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding: 32px 0 84px;
-  border-top: 1px solid var(--line);
+  padding: 32px 0 100px;
+  border-top: 1px solid var(--line-light);
 }
 
 .contact-details > div {
@@ -1192,7 +1212,7 @@ h2 em {
   font-family: "Manrope", sans-serif;
   font-weight: 600;
   font-size: 21px;
-  color: #000000;
+  color: #ffffff;
   margin-bottom: 12px;
 }
 
@@ -1200,18 +1220,20 @@ h2 em {
 .contact-details p {
   font-size: 16px;
   line-height: 1.55;
-  color: #000000;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .contact-details a:hover {
-  color: #000000;
+  color: var(--brand);
   text-decoration: underline;
   text-decoration-color: var(--brand);
 }
 
 footer {
+  background: #ffffff;
+  color: #000000;
   border-top: 1px solid var(--line);
-  padding-top: 28px;
+  padding: 36px clamp(24px, 5vw, 76px);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
@@ -1231,11 +1253,36 @@ footer p {
 }
 
 .back-top {
-  font-size: 11px;
-  justify-self: end;
+  width: 62px;
+  height: 62px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
   color: #000000;
-  display: inline-flex;
-  align-items: center;
+  justify-self: end;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.back-top svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  transform: rotate(-90deg);
+  transition: transform 180ms ease;
+}
+
+.back-top:hover {
+  color: #000000;
+  background: var(--brand);
+  border-color: var(--brand);
+  transform: translateY(-3px);
 }
 
 @media (max-width: 1024px) {
@@ -1412,7 +1459,7 @@ footer p {
     min-height: 0;
     padding: 30px 0 34px;
     border-right: 0;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--line-light);
   }
 
   .principle h3 {
@@ -1459,6 +1506,7 @@ footer p {
     grid-template-columns: 1fr 1fr;
     gap: 34px 20px;
     align-items: center;
+    padding: 32px 22px;
   }
 
   footer p {
@@ -1466,6 +1514,11 @@ footer p {
     grid-row: 2;
     text-align: center;
     justify-self: center;
+  }
+
+  .back-top {
+    width: 52px;
+    height: 52px;
   }
 }
 

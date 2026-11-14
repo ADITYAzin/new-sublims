@@ -622,17 +622,17 @@ export default function App() {
               <p>{t("contact.labels.address")}</p>
             </div>
           </div>
-
-          <footer>
-            <a className="logo footer-logo" href="#beranda">
-              SUBLiMS
-            </a>
-            <p>{t("footer.copyright", { year: new Date().getFullYear() })}</p>
-            <a href="#beranda" className="back-top">
-              {t("footer.backToTop")}
-            </a>
-          </footer>
         </section>
+
+        <footer>
+          <a className="logo footer-logo" href="#beranda">
+            SUBLiMS
+          </a>
+          <p>{t("footer.copyright", { year: new Date().getFullYear() })}</p>
+          <a href="#beranda" className="back-top" aria-label={t("footer.backToTop")}>
+            <ArrowIcon />
+          </a>
+        </footer>
       </main>
     </>
   );
