@@ -110,7 +110,7 @@ export function ProductImageSlider({ code }: ProductImageSliderProps) {
           type="button"
           className="product-slider-btn prev"
           onClick={handlePrev}
-          aria-label="Lihat tampak sebelumnya"
+          aria-label={t("catalog.sliderPrev", "Lihat tampak sebelumnya")}
         >
           <svg
             width="16"
@@ -131,7 +131,7 @@ export function ProductImageSlider({ code }: ProductImageSliderProps) {
           type="button"
           className="product-slider-btn next"
           onClick={handleNext}
-          aria-label="Lihat tampak berikutnya"
+          aria-label={t("catalog.sliderNext", "Lihat tampak berikutnya")}
         >
           <svg
             width="16"

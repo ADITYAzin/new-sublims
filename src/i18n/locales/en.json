@@ -19,16 +19,16 @@
     "description": "Established in 2025 and based in Sidoarjo, East Java, we supply a wide range of types and sizes of plastic pallets, crafted from both virgin and recycled materials.",
     "principles": {
       "p1": {
-        "title": "Fit for Purpose",
-        "desc": "Specifications tailored precisely to your operational context."
+        "title": "Industry Standards",
+        "desc": "Tough and proven plastic pallets for your seamless distribution."
       },
       "p2": {
-        "title": "Measurable",
-        "desc": "Accurate load capacities for safer, confident logistics decisions."
+        "title": "Efficient & Sustainable",
+        "desc": "Innovative solutions to optimize your business supply chain efficiency."
       },
       "p3": {
-        "title": "Responsive",
-        "desc": "Direct product consultation and streamlined delivery."
+        "title": "Responsive Service",
+        "desc": "Prompt and integrity-driven service built for long-term partnerships."
       }
     }
   },
@@ -70,6 +70,8 @@
     },
     "viewTop": "Top View",
     "viewBottom": "Bottom View",
+    "sliderPrev": "Previous view",
+    "sliderNext": "Next view",
     "orderProduct": "Order / Inquire Product",
     "fullCatalogCta": "Request full catalog",
     "catalogEmailSubject": "SUBLiMS Catalog Request",
@@ -92,7 +94,7 @@
   },
   "footer": {
     "copyright": "© {{year}} Subur Berlimpah Sejahtera",
-    "backToTop": "Back to top ↑"
+    "backToTop": "Back to top"
   },
   "modal": {
     "title": "Select Language",

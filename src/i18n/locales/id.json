@@ -24,7 +24,7 @@
       },
       "p2": {
         "title": "Efisien & Berkelanjutan",
-        "desc": "Solusi inovatif untuk mengoptimalkan efisiensiuntu rantai pasok bisnis Anda."
+        "desc": "Solusi inovatif untuk mengoptimalkan efisiensi rantai pasok bisnis Anda."
       },
       "p3": {
         "title": "Layanan Responsif",
@@ -70,6 +70,8 @@
     },
     "viewTop": "Tampak Atas",
     "viewBottom": "Tampak Bawah",
+    "sliderPrev": "Lihat tampak sebelumnya",
+    "sliderNext": "Lihat tampak berikutnya",
     "orderProduct": "Pesan / Tanya Produk",
     "fullCatalogCta": "Minta katalog lengkap",
     "catalogEmailSubject": "Permintaan Katalog SUBLiMS",
@@ -92,7 +94,7 @@
   },
   "footer": {
     "copyright": "© {{year}} Subur Berlimpah Sejahtera",
-    "backToTop": "Kembali ke atas ↑"
+    "backToTop": "Kembali ke atas"
   },
   "modal": {
     "title": "Pilih Bahasa",
