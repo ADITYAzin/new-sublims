@@ -9,7 +9,7 @@ const heroVideo = "/video/SUBLiMS.mp4";
 const products = [
   {
     code: "SNS1111-12H",
-    size: "110 × 110 × 12 cm",
+    size: "1100 × 1100 × 120 mm",
     weight: "7.5 kg",
     staticLoad: "2.000 kg",
     dynamicLoad: "1.000 kg",
@@ -24,7 +24,7 @@ const products = [
   },
   {
     code: "SNS1111-12W",
-    size: "110 × 110 × 12 cm",
+    size: "1100 × 1100 × 120 mm",
     weight: "7.5 kg",
     staticLoad: "3.000 kg",
     dynamicLoad: "1.500 kg",
@@ -39,7 +39,7 @@ const products = [
   },
   {
     code: "SNS1111-15H",
-    size: "110 × 110 × 15 cm",
+    size: "1100 × 1100 × 150 mm",
     weight: "12 kg",
     staticLoad: "3.000 kg",
     dynamicLoad: "1.500 kg",
@@ -54,7 +54,7 @@ const products = [
   },
   {
     code: "SNS1111-15W",
-    size: "110 × 110 × 15 cm",
+    size: "1100 × 1100 × 150 mm",
     weight: "12 kg",
     staticLoad: "4.000 kg",
     dynamicLoad: "2.000 kg",
@@ -69,7 +69,7 @@ const products = [
   },
   {
     code: "SNS1210-12H",
-    size: "120 × 100 × 12 cm",
+    size: "1200 × 1000 × 120 mm",
     weight: "7.5 kg",
     staticLoad: "2.000 kg",
     dynamicLoad: "1.000 kg",
@@ -84,7 +84,7 @@ const products = [
   },
   {
     code: "SNS1210-12W",
-    size: "120 × 100 × 12 cm",
+    size: "1200 × 1000 × 120 mm",
     weight: "7.5 kg",
     staticLoad: "3.000 kg",
     dynamicLoad: "1.500 kg",
@@ -99,7 +99,7 @@ const products = [
   },
   {
     code: "SNS1210-16H",
-    size: "120 × 100 × 16 cm",
+    size: "1200 × 1000 × 160 mm",
     weight: "17 kg",
     staticLoad: "5.000 kg",
     dynamicLoad: "1.500 kg",
@@ -114,7 +114,7 @@ const products = [
   },
   {
     code: "SNS1210-16W",
-    size: "120 × 100 × 16 cm",
+    size: "1200 × 1000 × 160 mm",
     weight: "17 kg",
     staticLoad: "6.000 kg",
     dynamicLoad: "2.000 kg",
@@ -129,7 +129,7 @@ const products = [
   },
   {
     code: "SFF1210-16H",
-    size: "120 × 100 × 16 cm",
+    size: "1200 × 1000 × 160 mm",
     weight: "18 kg",
     staticLoad: "5.000 kg",
     dynamicLoad: "1.500 kg",
@@ -144,7 +144,7 @@ const products = [
   },
   {
     code: "SFF1210-16W",
-    size: "120 × 100 × 16 cm",
+    size: "1200 × 1000 × 160 mm",
     weight: "18 kg",
     staticLoad: "6.000 kg",
     dynamicLoad: "2.000 kg",
@@ -159,7 +159,7 @@ const products = [
   },
   {
     code: "SSP16",
-    size: "120 × 100 × 15 cm",
+    size: "1200 × 1000 × 150 mm",
     weight: "16 kg",
     staticLoad: "2.000 kg",
     dynamicLoad: "1.000 kg",
@@ -174,7 +174,7 @@ const products = [
   },
   {
     code: "SSP25",
-    size: "120 × 100 × 15 cm",
+    size: "1200 × 1000 × 150 mm",
     weight: "25 kg",
     staticLoad: "3.000 kg",
     dynamicLoad: "1.500 kg",
