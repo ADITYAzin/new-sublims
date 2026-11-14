@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "about": "Tentang",
+    "catalog": "Katalog",
+    "contact": "Kontak",
+    "cta": "Hubungi kami",
+    "openMenu": "Buka menu",
+    "closeMenu": "Tutup menu"
+  },
+  "hero": {
+    "titleLine1": "Mitra Terpercaya",
+    "titleLine2": "Pengadaan Pallet Plastik",
+    "subtitle": "Distributor Berbagai Macam Jenis & Ukuran Pallet Plastik.",
+    "viewCatalog": "Lihat katalog"
+  },
+  "about": {
+    "eyebrow": "Tentang Kami",
+    "companyName": "Subur Berlimpah Sejahtera",
+    "description": "Kami berdiri pada tahun 2025 dan berlokasi di Sidoarjo - Jawa Timur. Kami melayani pemesanan berbagai macam jenis dan ukuran pallet plastik. Baik dari bahan plastik murni maupun daur ulang.",
+    "principles": {
+      "p1": {
+        "title": "Standar Industri",
+        "desc": "Pallet plastik tangguh dan teruji untuk kelancaran distribusi Anda."
+      },
+      "p2": {
+        "title": "Efisien & Berkelanjutan",
+        "desc": "Solusi inovatif untuk mengoptimalkan efisiensiuntu rantai pasok bisnis Anda."
+      },
+      "p3": {
+        "title": "Layanan Responsif",
+        "desc": "Pelayanan cepat dan berintegritas untuk kemitraan jangka panjang."
+      }
+    }
+  },
+  "catalog": {
+    "eyebrow": "Katalog Kami",
+    "title": "Pilih",
+    "titleEm": "kebutuhan Anda.",
+    "selectPlaceholder": "Pilih Kategori Pallet",
+    "allProductsLabel": "Semua",
+    "resetFilter": "Reset Pilihan",
+    "categories": {
+      "all": "Semua Pallet",
+      "ekspor": "Pallet Ekspor",
+      "gudang": "Pallet Gudang"
+    },
+    "types": {
+      "mangkok": "Pallet Mangkok",
+      "racking": "Pallet Racking",
+      "flat": "Pallet Flat Deck",
+      "solid": "Pallet Heavy Solid"
+    },
+    "specs": {
+      "dimensions": "Ukuran",
+      "weight": "Berat",
+      "staticLoad": "Beban Statis",
+      "dynamicLoad": "Beban Dinamis",
+      "rackingLoad": "Beban Racking",
+      "staticShort": "Statis",
+      "dynamicShort": "Dinamis",
+      "rackingShort": "Racking",
+      "forklift": "Akses Forklift",
+      "handPallet": "Akses Hand Pallet",
+      "forkliftShort": "Forklift",
+      "handPalletShort": "Hand Pallet",
+      "fourWay": "4 Arah",
+      "twoWay": "2 Arah",
+      "loadCapacity": "Kapasitas Beban",
+      "handlingAccess": "Akses Penanganan"
+    },
+    "viewTop": "Tampak Atas",
+    "viewBottom": "Tampak Bawah",
+    "orderProduct": "Pesan / Tanya Produk",
+    "fullCatalogCta": "Minta katalog lengkap",
+    "catalogEmailSubject": "Permintaan Katalog SUBLiMS",
+    "waProductMsg": "Halo SUBLiMS, saya tertarik dengan pallet tipe {{code}} ({{size}}). Mohon info ketersediaan dan penawaran harga."
+  },
+  "contact": {
+    "eyebrow": "Kontak Kami",
+    "titleLine1": "Mari",
+    "titleEm": "Terhubung.",
+    "cta": "Pesan sekarang",
+    "waConsultMsg": "Halo SUBLiMS, saya ingin berkonsultasi mengenai pallet plastik.",
+    "labels": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "hours": "Operasional",
+      "hoursValue": "Sen–Jum / 08.00–16.00 WIB",
+      "location": "Lokasi",
+      "address": "Ds. Pilang, RT 24 / RW 12, Wonoayu, Sidoarjo, Jawa Timur 61261"
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} Subur Berlimpah Sejahtera",
+    "backToTop": "Kembali ke atas ↑"
+  },
+  "modal": {
+    "title": "Pilih Bahasa",
+    "subtitle": "Select Language",
+    "detectedId": "Terdeteksi di Indonesia",
+    "detectedOther": "Lokasi terdeteksi di luar Indonesia",
+    "descriptionId": "Bahasa Indonesia dipilih otomatis berdasarkan lokasi Anda. Anda dapat langsung melanjutkan atau mengubah pilihan.",
+    "descriptionOther": "Bahasa Inggris dipilih otomatis berdasarkan lokasi Anda. Anda dapat langsung melanjutkan atau mengubah pilihan.",
+    "selectLabel": "Bahasa Pilihan",
+    "chooseBtn": "Pilih / Choose",
+    "note": "Anda selalu dapat mengganti bahasa kapan saja melalui menu di bagian atas."
+  },
+  "languages": {
+    "id": "Bahasa Indonesia",
+    "en": "English"
+  }
+}

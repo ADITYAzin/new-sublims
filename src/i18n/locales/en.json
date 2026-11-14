@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "about": "About",
+    "catalog": "Catalog",
+    "contact": "Contact",
+    "cta": "Contact us",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "titleLine1": "Premium Quality",
+    "titleLine2": "Plastic Pallets",
+    "subtitle": "Distributor of Various Types & Sizes of Industrial Plastic Pallets.",
+    "viewCatalog": "View catalog"
+  },
+  "about": {
+    "eyebrow": "About Us",
+    "companyName": "Subur Berlimpah Sejahtera",
+    "description": "Established in 2025 and based in Sidoarjo, East Java, we supply a wide range of types and sizes of plastic pallets, crafted from both virgin and recycled materials.",
+    "principles": {
+      "p1": {
+        "title": "Fit for Purpose",
+        "desc": "Specifications tailored precisely to your operational context."
+      },
+      "p2": {
+        "title": "Measurable",
+        "desc": "Accurate load capacities for safer, confident logistics decisions."
+      },
+      "p3": {
+        "title": "Responsive",
+        "desc": "Direct product consultation and streamlined delivery."
+      }
+    }
+  },
+  "catalog": {
+    "eyebrow": "Our Catalog",
+    "title": "Choose",
+    "titleEm": "your requirements.",
+    "selectPlaceholder": "Select Pallet Category",
+    "allProductsLabel": "All",
+    "resetFilter": "Reset Filter",
+    "categories": {
+      "all": "All Pallets",
+      "ekspor": "Export Pallets",
+      "gudang": "Warehouse Pallets"
+    },
+    "types": {
+      "mangkok": "Nestable Pallet",
+      "racking": "Racking Pallet",
+      "flat": "Flat Deck Pallet",
+      "solid": "Heavy Solid Pallet"
+    },
+    "specs": {
+      "dimensions": "Dimensions",
+      "weight": "Weight",
+      "staticLoad": "Static Load",
+      "dynamicLoad": "Dynamic Load",
+      "rackingLoad": "Racking Load",
+      "staticShort": "Static",
+      "dynamicShort": "Dynamic",
+      "rackingShort": "Racking",
+      "forklift": "Forklift Access",
+      "handPallet": "Hand Pallet Access",
+      "forkliftShort": "Forklift",
+      "handPalletShort": "Hand Pallet",
+      "fourWay": "4-Way",
+      "twoWay": "2-Way",
+      "loadCapacity": "Load Capacity",
+      "handlingAccess": "Handling Access"
+    },
+    "viewTop": "Top View",
+    "viewBottom": "Bottom View",
+    "orderProduct": "Order / Inquire Product",
+    "fullCatalogCta": "Request full catalog",
+    "catalogEmailSubject": "SUBLiMS Catalog Request",
+    "waProductMsg": "Hello SUBLiMS, I am interested in pallet type {{code}} ({{size}}). Please provide availability and pricing details."
+  },
+  "contact": {
+    "eyebrow": "Contact Us",
+    "titleLine1": "Let's",
+    "titleEm": "Connect.",
+    "cta": "Consult now",
+    "waConsultMsg": "Hello SUBLiMS, I would like to consult regarding plastic pallets.",
+    "labels": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "hours": "Hours",
+      "hoursValue": "Mon–Fri / 08:00–16:00 (GMT+7)",
+      "location": "Location",
+      "address": "Ds. Pilang, RT 24 / RW 12, Wonoayu, Sidoarjo, East Java 61261, Indonesia"
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} Subur Berlimpah Sejahtera",
+    "backToTop": "Back to top ↑"
+  },
+  "modal": {
+    "title": "Select Language",
+    "subtitle": "Pilih Bahasa",
+    "detectedId": "📍 Detected in Indonesia",
+    "detectedOther": "📍 Location detected outside Indonesia",
+    "descriptionId": "Indonesian has been automatically selected based on your detected location. You can proceed directly or change your preference.",
+    "descriptionOther": "English has been automatically selected based on your detected location. You can proceed directly or change your preference.",
+    "selectLabel": "Preferred Language",
+    "chooseBtn": "Choose / Pilih",
+    "note": "You can change your language anytime from the top navigation."
+  },
+  "languages": {
+    "id": "Bahasa Indonesia",
+    "en": "English"
+  }
+}

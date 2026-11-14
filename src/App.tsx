@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import LanguageModal from "./components/LanguageModal";
+import LanguageSwitcher from "./components/LanguageSwitcher";
+import { ProductImageSlider } from "./components/ProductImageSlider";
 
-const heroImage =
-  "https://images.unsplash.com/photo-1620388640785-892616248ec8?auto=format&fit=crop&w=2200&q=88";
+const heroVideo = "/video/SUBLiMS.mp4";
 
 const products = [
   {
@@ -16,7 +19,6 @@ const products = [
     stacker: "—",
     type: "Light Duty",
     palletType: "mangkok",
-    palletTypeName: "Pallet Mangkok",
     tone: "light",
     category: "110",
   },
@@ -32,7 +34,6 @@ const products = [
     stacker: "—",
     type: "Medium Duty",
     palletType: "mangkok",
-    palletTypeName: "Pallet Mangkok",
     tone: "dark",
     category: "110",
   },
@@ -48,7 +49,6 @@ const products = [
     stacker: "—",
     type: "Racking",
     palletType: "racking",
-    palletTypeName: "Pallet Racking",
     tone: "light",
     category: "110",
   },
@@ -64,7 +64,6 @@ const products = [
     stacker: "—",
     type: "Heavy Racking",
     palletType: "racking",
-    palletTypeName: "Pallet Racking",
     tone: "dark",
     category: "110",
   },
@@ -80,7 +79,6 @@ const products = [
     stacker: "—",
     type: "Light Duty",
     palletType: "mangkok",
-    palletTypeName: "Pallet Mangkok",
     tone: "dark",
     category: "120",
   },
@@ -96,7 +94,6 @@ const products = [
     stacker: "—",
     type: "Medium Duty",
     palletType: "mangkok",
-    palletTypeName: "Pallet Mangkok",
     tone: "light",
     category: "120",
   },
@@ -112,7 +109,6 @@ const products = [
     stacker: "2 Arah",
     type: "Heavy Duty",
     palletType: "racking",
-    palletTypeName: "Pallet Racking",
     tone: "dark",
     category: "120",
   },
@@ -128,7 +124,6 @@ const products = [
     stacker: "2 Arah",
     type: "Heavy Racking",
     palletType: "racking",
-    palletTypeName: "Pallet Racking",
     tone: "light",
     category: "120",
   },
@@ -144,7 +139,6 @@ const products = [
     stacker: "2 Arah",
     type: "Flat Deck",
     palletType: "flat",
-    palletTypeName: "Pallet Flat Deck",
     tone: "light",
     category: "flat",
   },
@@ -160,12 +154,11 @@ const products = [
     stacker: "2 Arah",
     type: "Flat Deck Heavy",
     palletType: "flat",
-    palletTypeName: "Pallet Flat Deck",
     tone: "dark",
     category: "flat",
   },
   {
-    code: "SPP16",
+    code: "SSP16",
     size: "120 × 100 × 15 cm",
     weight: "16 kg",
     staticLoad: "2.000 kg",
@@ -176,12 +169,11 @@ const products = [
     stacker: "4 Arah",
     type: "Multi-Way",
     palletType: "solid",
-    palletTypeName: "Pallet Heavy Solid",
     tone: "light",
-    category: "spp",
+    category: "ssp",
   },
   {
-    code: "SPP25",
+    code: "SSP25",
     size: "120 × 100 × 15 cm",
     weight: "25 kg",
     staticLoad: "3.000 kg",
@@ -192,18 +184,23 @@ const products = [
     stacker: "2 Arah",
     type: "Solid Heavy",
     palletType: "solid",
-    palletTypeName: "Pallet Heavy Solid",
     tone: "dark",
-    category: "spp",
+    category: "ssp",
   },
 ];
 
+const exportPalletCodes = new Set([
+  "SNS1111-12H",
+  "SNS1111-12W",
+  "SNS1210-12H",
+  "SNS1210-12W",
+  "SSP16",
+]);
+
 const categories = [
-  { id: "all", label: "Semua Pallet", count: 12 },
-  { id: "mangkok", label: "Pallet Mangkok", count: 4 },
-  { id: "racking", label: "Pallet Racking", count: 4 },
-  { id: "flat", label: "Pallet Flat Deck", count: 2 },
-  { id: "solid", label: "Pallet Heavy Solid", count: 2 },
+  { id: "all" },
+  { id: "ekspor" },
+  { id: "gudang" },
 ];
 
 function ArrowIcon() {
@@ -227,36 +224,90 @@ function PalletGraphic() {
 }
 
 export default function App() {
+  const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isFiltersSticky, setIsFiltersSticky] = useState(false);
+  const filtersSentinelRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const filteredProducts = products.filter((p) => {
     if (selectedCategory === "all") return true;
-    return p.palletType === selectedCategory;
+    const isExport = exportPalletCodes.has(p.code);
+    if (selectedCategory === "ekspor") return isExport;
+    if (selectedCategory === "gudang") return !isExport;
+    return true;
   });
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
     };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+
+      const sentinel = filtersSentinelRef.current;
+      if (sentinel) {
+        const topOffset = window.innerWidth <= 900 ? 76 : 80;
+        const rect = sentinel.getBoundingClientRect();
+        const catalogEl = sentinel.closest("section");
+        const catalogBottom = catalogEl ? catalogEl.getBoundingClientRect().bottom : Infinity;
+        setIsFiltersSticky(rect.top <= topOffset && catalogBottom > topOffset);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
+  const formatAccess = (value: string) => {
+    if (value === "4 Arah") return t("catalog.specs.fourWay");
+    if (value === "2 Arah") return t("catalog.specs.twoWay");
+    return value;
+  };
+
   return (
     <>
-      <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+      <LanguageModal />
+
+      <header
+        className={`site-header ${scrolled ? "is-scrolled" : ""} ${menuOpen ? "is-menu-open" : ""}`}
+      >
         <a className="logo" href="#beranda" onClick={closeMenu} aria-label="SUBLiMS">
-          SUBLiMS<span>.</span>
+          SUBLiMS
         </a>
 
         <button
           className="menu-button"
           type="button"
-          aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
+          aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((value) => !value)}
         >
@@ -266,245 +317,323 @@ export default function App() {
 
         <nav className={menuOpen ? "nav-links is-open" : "nav-links"}>
           <a href="#tentang" onClick={closeMenu}>
-            Tentang
+            {t("nav.about")}
           </a>
           <a href="#katalog" onClick={closeMenu}>
-            Katalog
+            {t("nav.catalog")}
           </a>
           <a href="#kontak" onClick={closeMenu}>
-            Kontak
+            {t("nav.contact")}
           </a>
+          <div className="mobile-switcher-wrap">
+            <span className="mobile-switcher-label">{t("modal.selectLabel")}</span>
+            <LanguageSwitcher variant="mobile" />
+          </div>
         </nav>
 
-        <a
-          className="header-cta"
-          href="https://wa.me/6285113668629"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Hubungi kami <ArrowIcon />
-        </a>
+        <div className="header-actions">
+          <LanguageSwitcher variant="header" />
+        </div>
       </header>
 
       <main>
         <section className="hero" id="beranda">
-          <img
+          <video
             className="hero-image"
-            src={heroImage}
-            alt="Operasional forklift di dalam gudang logistik"
+            src={heroVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
           />
           <div className="hero-overlay" />
 
-        <div className="hero-content">
-          
-          <h1>
-            Pallet Plastik
-            <br />
-           Berkualitas
-          </h1>
-          <div className="hero-bottom">
-            <p>Distributor Berbagai Macam Jenis & Ukuran Pallet Plastik.</p>
-            <a className="circle-link" href="#katalog" aria-label="Lihat katalog">
-              <ArrowIcon />
-            </a>
+          <div className="hero-content">
+            <h1>
+              {t("hero.titleLine1")}
+              <br />
+              {t("hero.titleLine2")}
+            </h1>
+            <div className="hero-bottom">
+              <p>{t("hero.subtitle")}</p>
+              <a className="circle-link" href="#katalog" aria-label={t("hero.viewCatalog")}>
+                <ArrowIcon />
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div className="hero-index">
-          
-        </div>
-      </section>
+          <div className="hero-index" />
+        </section>
 
-      <section className="about section-pad" id="tentang">
-        <div className="section-heading">
-          <div className="eyebrow">
-            <span />
-            Tentang Kami
+        <section className="about section-pad" id="tentang">
+          <div className="section-heading">
+            <div className="eyebrow">
+              <span />
+              {t("about.eyebrow")}
+            </div>
+            <span className="section-number">02</span>
           </div>
-          <span className="section-number">02</span>
-        </div>
 
-        <div className="about-grid">
-          <h2>
-            <em>Subur Berlimpah Sejahtera</em>
-          </h2>
-          <div className="about-copy">
-            <p>
-              Kami berdiri pada tahun 2025 dan berlokasi di Sidoarjo - Jawa
-              Timur. Kami melayani pemesanan berbagai macam jenis dan ukuran pallet plastik. Baik
-              dari bahan plastik murni maupun daur ulang.
-            </p>
+          <div className="about-grid">
+            <h2>
+              <em>{t("about.companyName")}</em>
+            </h2>
+            <div className="about-copy">
+              <p>{t("about.description")}</p>
+            </div>
           </div>
-        </div>
 
-        <div className="principles">
-          <div className="principle">
-            <span>01</span>
-            <h3>Tepat guna</h3>
-            <p>Spesifikasi disesuaikan dengan konteks penggunaan.</p>
+          <div className="principles">
+            <div className="principle">
+              <span>01</span>
+              <h3>{t("about.principles.p1.title")}</h3>
+              <p>{t("about.principles.p1.desc")}</p>
+            </div>
+            <div className="principle">
+              <span>02</span>
+              <h3>{t("about.principles.p2.title")}</h3>
+              <p>{t("about.principles.p2.desc")}</p>
+            </div>
+            <div className="principle">
+              <span>03</span>
+              <h3>{t("about.principles.p3.title")}</h3>
+              <p>{t("about.principles.p3.desc")}</p>
+            </div>
           </div>
-          <div className="principle">
-            <span>02</span>
-            <h3>Terukur</h3>
-            <p>Data beban jelas untuk keputusan yang lebih aman.</p>
-          </div>
-          <div className="principle">
-            <span>03</span>
-            <h3>Responsif</h3>
-            <p>Konsultasi produk dan distribusi tanpa proses panjang.</p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="catalog section-pad" id="katalog">
-        <div className="section-heading catalog-heading">
-          <div className="eyebrow">
-            <span />
-            Katalog Kami
+        <section className="catalog section-pad" id="katalog">
+          <div className="section-heading catalog-heading">
+            <div className="eyebrow">
+              <span />
+              {t("catalog.eyebrow")}
+            </div>
+            <span className="section-number">03</span>
           </div>
-          <span className="section-number">03</span>
-        </div>
 
-        <div className="catalog-title">
-          <h2>
-            Pilih <em>kebutuhan Anda.</em>
-          </h2>
-        </div>
-
-        <div className="catalog-filters-sticky-wrap">
-          <div className="catalog-filters">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                type="button"
-                className={`filter-btn ${selectedCategory === cat.id ? "active" : ""}`}
-                onClick={() => setSelectedCategory(cat.id)}
-              >
-                <span>{cat.label}</span>
-                <span className="filter-count">{cat.count}</span>
-              </button>
-            ))}
+          <div className="catalog-title">
+            <h2>
+              {t("catalog.title")} <em>{t("catalog.titleEm")}</em>
+            </h2>
           </div>
-        </div>
 
-        <div className="product-grid">
-          {filteredProducts.map((product, index) => (
-            <article className="product-card" key={product.code}>
-              <div className="product-top">
-                <span className="product-type-badge">{product.palletTypeName}</span>
-                <span className="product-index">{String(index + 1).padStart(2, "0")}</span>
-              </div>
-              <PalletGraphic />
-              <div className="product-info">
-                <div className="product-code-row">
-                  <h3>{product.code}</h3>
-                </div>
-                <div className="product-spec-list">
-                  <div className="spec-row">
-                    <span className="spec-label">Dimensi</span>
-                    <span className="spec-value">{product.size}</span>
-                  </div>
-                  <div className="spec-row">
-                    <span className="spec-label">Berat</span>
-                    <span className="spec-value">{product.weight}</span>
-                  </div>
-                  <div className="spec-row">
-                    <span className="spec-label">Beban Statis</span>
-                    <span className="spec-value">{product.staticLoad}</span>
-                  </div>
-                  <div className="spec-row">
-                    <span className="spec-label">Beban Dinamis</span>
-                    <span className="spec-value">{product.dynamicLoad}</span>
-                  </div>
-                  <div className="spec-row">
-                    <span className="spec-label">Beban Racking</span>
-                    <span className="spec-value">{product.rackingLoad}</span>
-                  </div>
-                  <div className="spec-row">
-                    <span className="spec-label">Akses Forklift</span>
-                    <span className="spec-value">{product.forklift}</span>
-                  </div>
-                  <div className="spec-row">
-                    <span className="spec-label">Akses Hand Pallet</span>
-                    <span className="spec-value">{product.handPallet}</span>
-                  </div>
-                </div>
-                <a
-                  className="product-card-action"
-                  href={`https://wa.me/6285113668629?text=Halo%20SUBLiMS%2C%20saya%20tertarik%20dengan%20pallet%20tipe%20${product.code}%20(${product.size}).%20Mohon%20info%20ketersediaan%20dan%20penawaran%20harga.`}
-                  target="_blank"
-                  rel="noreferrer"
+          <div ref={filtersSentinelRef} className="catalog-filters-sentinel" aria-hidden="true" />
+          <div className={`catalog-filters-sticky-wrap ${isFiltersSticky ? "is-sticky" : ""}`}>
+            <div className="catalog-dropdown-wrapper">
+              <div className="catalog-dropdown-container" ref={dropdownRef}>
+                <button
+                  type="button"
+                  className={`catalog-dropdown-trigger ${isDropdownOpen ? "is-open" : ""} ${selectedCategory !== "all" ? "has-active-selection" : ""}`}
+                  onClick={() => setIsDropdownOpen((prev) => !prev)}
+                  aria-haspopup="listbox"
+                  aria-expanded={isDropdownOpen}
                 >
-                  Pesan / Tanya Produk <ArrowIcon />
-                </a>
+                  <div className="dropdown-trigger-left">
+                    <span className="dropdown-label">
+                      {selectedCategory === "all"
+                        ? t("catalog.selectPlaceholder")
+                        : t(`catalog.categories.${selectedCategory}`)}
+                    </span>
+                  </div>
+
+                  <div className="dropdown-trigger-right">
+                    {selectedCategory !== "all" && (
+                      <span
+                        role="button"
+                        tabIndex={0}
+                        className="dropdown-inline-reset"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedCategory("all");
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.stopPropagation();
+                            setSelectedCategory("all");
+                          }
+                        }}
+                        title={t("catalog.resetFilter")}
+                        aria-label={t("catalog.resetFilter")}
+                      >
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          aria-hidden="true"
+                        >
+                          <line x1="18" y1="6" x2="6" y2="18" />
+                          <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                        <span className="reset-text">{t("catalog.resetFilter")}</span>
+                      </span>
+                    )}
+
+                    <svg
+                      className={`dropdown-chevron-icon ${isDropdownOpen ? "is-open" : ""}`}
+                      width="18"
+                      height="18"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m5 7.5 5 5 5-5" />
+                    </svg>
+                  </div>
+                </button>
+
+                {isDropdownOpen && (
+                  <div className="catalog-dropdown-menu" role="listbox">
+                    {categories.map((cat) => {
+                      const isSelected = selectedCategory === cat.id;
+                      const label = t(`catalog.categories.${cat.id}`);
+
+                      return (
+                        <button
+                          key={cat.id}
+                          type="button"
+                          role="option"
+                          aria-selected={isSelected}
+                          className={`catalog-dropdown-option ${isSelected ? "is-selected" : ""}`}
+                          onClick={() => {
+                            setSelectedCategory(cat.id);
+                            setIsDropdownOpen(false);
+                          }}
+                        >
+                          <span className="option-name">{label}</span>
+                          {isSelected && (
+                            <svg
+                              className="option-check-icon"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              aria-hidden="true"
+                            >
+                              <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
-            </article>
-          ))}
-        </div>
-
-        <a
-          className="catalog-cta"
-          href="mailto:office@sublims.id?subject=Permintaan%20Katalog%20SUBLiMS"
-        >
-          Minta katalog lengkap <ArrowIcon />
-        </a>
-      </section>
-
-      <section className="contact section-pad" id="kontak">
-        <div className="section-heading">
-          <div className="eyebrow">
-            <span />
-            Kontak Kami
+            </div>
           </div>
-          <span className="section-number">04</span>
-        </div>
 
-        <div className="contact-main">
-          <h2>
-            Pesan Pallet
-            <br />
-            pallet <em>spesifik?</em>
-          </h2>
-          <a
-            className="contact-button"
-            href="https://wa.me/6285113668629?text=Halo%20SUBLiMS%2C%20saya%20ingin%20berkonsultasi%20mengenai%20pallet%20plastik."
-            target="_blank"
-            rel="noreferrer"
-          >
-            Konsultasikan sekarang <ArrowIcon />
-          </a>
-        </div>
+          <div className="product-grid">
+            {filteredProducts.map((product, index) => {
+              return (
+                <article className="product-card" key={product.code}>
+                  <div className="product-top">
+                    <span className="product-index">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <ProductImageSlider code={product.code} />
+                  <div className="product-info">
+                    <div className="product-code-row">
+                      <h3>{product.code}</h3>
+                    </div>
+                    <div className="product-spec-list">
+                      <div className="spec-row">
+                        <span className="spec-label">{t("catalog.specs.dimensions")}</span>
+                        <span className="spec-value">{product.size}</span>
+                      </div>
+                      <div className="spec-row">
+                        <span className="spec-label">{t("catalog.specs.weight")}</span>
+                        <span className="spec-value">{product.weight}</span>
+                      </div>
+                      <div className="spec-row">
+                        <span className="spec-label">{t("catalog.specs.staticLoad")}</span>
+                        <span className="spec-value">{product.staticLoad}</span>
+                      </div>
+                      <div className="spec-row">
+                        <span className="spec-label">{t("catalog.specs.dynamicLoad")}</span>
+                        <span className="spec-value">{product.dynamicLoad}</span>
+                      </div>
+                      <div className="spec-row">
+                        <span className="spec-label">{t("catalog.specs.rackingLoad")}</span>
+                        <span className="spec-value">{product.rackingLoad}</span>
+                      </div>
+                      <div className="spec-row">
+                        <span className="spec-label">{t("catalog.specs.forklift")}</span>
+                        <span className="spec-value">{formatAccess(product.forklift)}</span>
+                      </div>
+                      <div className="spec-row">
+                        <span className="spec-label">{t("catalog.specs.handPallet")}</span>
+                        <span className="spec-value">{formatAccess(product.handPallet)}</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
 
-        <div className="contact-details">
-          <div>
-            <span>Email</span>
-            <a href="mailto:office@sublims.id">office@sublims.id</a>
+        <section className="contact section-pad" id="kontak">
+          <div className="section-heading">
+            <div className="eyebrow">
+              <span />
+              {t("contact.eyebrow")}
+            </div>
+            <span className="section-number">04</span>
           </div>
-          <div>
-            <span>WhatsApp</span>
-            <a href="tel:+6285113668629">+62 851 1366 8629</a>
-          </div>
-          <div>
-            <span>Operasional</span>
-            <p>Sen–Jum / 08.00–16.00 WIB</p>
-          </div>
-          <div className="address">
-            <span>Lokasi</span>
-            <p>Ds. Pilang, RT 24 / RW 12, Wonoayu, Sidoarjo, Jawa Timur 61261</p>
-          </div>
-        </div>
 
-        <footer>
-          <a className="logo footer-logo" href="#beranda">
-            SUBLiMS<span>.</span>
-          </a>
-          <p>© {new Date().getFullYear()} Subur Berlimpah Sejahtera</p>
-          <a href="#beranda" className="back-top">
-            Kembali ke atas ↑
-          </a>
-        </footer>
-      </section>
-    </main>
-  </>
+          <div className="contact-main">
+            <h2>
+              {t("contact.titleLine1")}
+              {t("contact.titleEm") ? (
+                <>
+                  <br />
+                  <em>{t("contact.titleEm")}</em>
+                </>
+              ) : null}
+            </h2>
+          </div>
+
+          <div className="contact-details">
+            <div>
+              <span>{t("contact.labels.email")}</span>
+              <a href="mailto:office@sublims.id">office@sublims.id</a>
+            </div>
+            <div>
+              <span>{t("contact.labels.whatsapp")}</span>
+              <a href="tel:+6285113668629">+62 851 1366 8629</a>
+            </div>
+            <div>
+              <span>{t("contact.labels.hours")}</span>
+              <p>{t("contact.labels.hoursValue")}</p>
+            </div>
+            <div className="address">
+              <span>{t("contact.labels.location")}</span>
+              <p>{t("contact.labels.address")}</p>
+            </div>
+          </div>
+
+          <footer>
+            <a className="logo footer-logo" href="#beranda">
+              SUBLiMS
+            </a>
+            <p>{t("footer.copyright", { year: new Date().getFullYear() })}</p>
+            <a href="#beranda" className="back-top">
+              {t("footer.backToTop")}
+            </a>
+          </footer>
+        </section>
+      </main>
+    </>
   );
 }
